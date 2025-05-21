@@ -11,7 +11,11 @@ public abstract class _Settings {
     // GAME
     public static final int GAME_WIDTH  = 4;
     public static final int GAME_HEIGHT = 4;
+
+    // TILES
+    public static final int TILE_TYPES = 10;
     public static final int TILE_SIZE   = 128;
+    public static final int TILE_TEXTURE_SIZE = 16;
 
     // SCREEN
     public static final int SCREEN_WIDTH  = GAME_WIDTH  * TILE_SIZE;
