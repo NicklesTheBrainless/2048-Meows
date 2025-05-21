@@ -3,7 +3,7 @@ package _main.listeners;
 import java.awt.*;
 import java.awt.event.*;
 
-public class MouseHandler implements MouseListener, MouseMotionListener, MouseWheelListener{
+public class MouseHandler implements MouseListener, MouseMotionListener, MouseWheelListener {
 
     public boolean leftJustClicked, middleJustClicked, rightJustClicked = false;
     public boolean leftJustPressed, middleJustPressed, rightJustPressed = false;

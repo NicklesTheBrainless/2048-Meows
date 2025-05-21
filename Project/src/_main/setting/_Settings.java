@@ -6,10 +6,15 @@ public abstract class _Settings {
     public static final String TITLE = "2048-Meows";
 
     // FPS
-    public static final int SETTING_MAX_FPS = 50;
+    public static final int SETTING_MAX_FPS = 5;
+
+    // GAME
+    public static final int GAME_WIDTH  = 4;
+    public static final int GAME_HEIGHT = 4;
+    public static final int TILE_SIZE   = 128;
 
     // SCREEN
-    public static final int SCREEN_WIDTH  = 800;
-    public static final int SCREEN_HEIGHT = 800;
+    public static final int SCREEN_WIDTH  = GAME_WIDTH  * TILE_SIZE;
+    public static final int SCREEN_HEIGHT = GAME_HEIGHT * TILE_SIZE;
 
 }

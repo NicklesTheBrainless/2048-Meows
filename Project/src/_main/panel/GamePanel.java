@@ -2,6 +2,7 @@ package _main.panel;
 
 import _main.listeners.KeyHandler;
 import _main.listeners.MouseHandler;
+import game.TileManager;
 
 import java.awt.*;
 import java.util.Random;
@@ -13,6 +14,9 @@ public class GamePanel extends BasePanel {
     // input listeners
     public KeyHandler   keyH   = new KeyHandler();
     public MouseHandler mouseH = new MouseHandler();
+
+    // game objects
+    TileManager tileM = new TileManager(this);
 
     public GamePanel() {
 
@@ -36,16 +40,22 @@ public class GamePanel extends BasePanel {
     @Override
     protected void update(double delta) {
 
+        tileM.update(delta);
+
+        // update listeners
+        keyH.update();
+        mouseH.update();
     }
 
     @Override
     protected void draw(Graphics2D g2) {
 
+        tileM.draw(g2);
     }
 
     @Override
     protected void onSecond(int currentFPS) {
 
-        System.out.println(currentFPS);
+        // System.out.println(currentFPS);
     }
 }
