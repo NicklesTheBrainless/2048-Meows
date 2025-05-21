@@ -7,6 +7,7 @@ import utils.GameObject;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
+import static _main.resource._Resources.TILE_TEXTURES;
 import static _main.setting._Settings.*;
 import static utils.Utils.random;
 
@@ -30,27 +31,34 @@ public class TileManager implements GameObject {
 
         switch (kh.keyJustPressed) {
 
-            case KeyEvent.VK_W -> move(-1,  0);
-            case KeyEvent.VK_A -> move( 0, -1);
-            case KeyEvent.VK_S -> move( 1,  0);
-            case KeyEvent.VK_D -> move( 0,  1);
+            case KeyEvent.VK_W -> makeMove(-1,  0);
+            case KeyEvent.VK_A -> makeMove( 0, -1);
+            case KeyEvent.VK_S -> makeMove( 1,  0);
+            case KeyEvent.VK_D -> makeMove( 0,  1);
         }
     }
 
     @Override
     public void draw(Graphics2D g2) {
 
+        for (int y = 0; y < GAME_HEIGHT; y++) {
+            for (int x = 0; x < GAME_WIDTH; x++) {
+
+                int tileID = grid[x][y];
+                g2.drawImage(TILE_TEXTURES[tileID], x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE, null);
+            }
+        }
     }
 
 
 
-    private void move(int moveX, int moveY) {
+    private void makeMove(int moveX, int moveY) {
 
         placeRandomTile();
 
-        compress(moveX, moveY);
-        merge   (moveX, moveY);
-        compress(moveX, moveY);
+        compressAll(moveX, moveY);
+        mergeAll(moveX, moveY);
+        compressAll(moveX, moveY);
     }
 
 
@@ -72,11 +80,46 @@ public class TileManager implements GameObject {
         }
     }
 
-    private void compress(int moveX, int moveY) {
+    private void compressAll(int moveX, int moveY) {
+
+        for (int y = 0; y < GAME_HEIGHT; y++) {
+            for (int x = 0; x < GAME_WIDTH; x++) {
+
+                int tileID = grid[x][y];
+                if (tileID == 0)
+                    continue;
+
+                compressTile(tileID, x, y, moveX, moveY);
+            }
+        }
+    }
+
+    private void mergeAll(int moveX, int moveY) {
 
     }
 
-    private void merge(int moveX, int moveY) {
 
+
+    private void compressTile(int tileID, int tileX, int tileY, int moveX, int moveY) {
+
+        grid[tileX][tileY] = 0;
+
+        while (true) {
+
+            int checkX = tileX + moveX;
+            int checkY = tileY + moveY;
+
+            if (checkX < 0 || checkX >= GAME_WIDTH || checkY < 0 || checkY >= GAME_HEIGHT)
+                break;
+
+            int checkID = grid[checkX][checkY];
+            if (checkID != 0)
+                break;
+
+            tileX = checkX;
+            tileY = checkY;
+        }
+
+        grid[tileX][tileY] = tileID;
     }
 }
