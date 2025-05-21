@@ -18,6 +18,8 @@ public class TileManager implements GameObject {
 
     int[][] grid = new int[GAME_WIDTH][GAME_HEIGHT];
 
+    int newTileX, newTileY;
+
     public TileManager(GamePanel gp) {
 
         this.gp = gp;
@@ -46,6 +48,10 @@ public class TileManager implements GameObject {
 
                 int tileID = grid[x][y];
                 g2.drawImage(TILE_TEXTURES[tileID], x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE, null);
+
+                g2.setColor(new Color(100, 150, 250, 100));
+                if (x == newTileX && y == newTileY)
+                    g2.fillOval(x * TILE_SIZE + 16, y * TILE_SIZE + 16, TILE_SIZE - 32, TILE_SIZE - 32);
             }
         }
     }
@@ -54,11 +60,11 @@ public class TileManager implements GameObject {
 
     private void makeMove(int moveX, int moveY) {
 
-        placeRandomTile();
-
         compressAll(moveX, moveY);
         mergeAll(moveX, moveY);
         compressAll(moveX, moveY);
+
+        placeRandomTile();
     }
 
 
@@ -76,14 +82,39 @@ public class TileManager implements GameObject {
                 continue;
 
             grid[rx][ry] = random.nextInt(1, 3);
+
+            newTileX = rx;
+            newTileY = ry;
+
             tilePlaced = true;
         }
     }
 
     private void compressAll(int moveX, int moveY) {
 
-        for (int y = 0; y < GAME_HEIGHT; y++) {
-            for (int x = 0; x < GAME_WIDTH; x++) {
+        int startX = 0;
+        int endX = GAME_WIDTH;
+        int addX = 1;
+        if (moveX == 1) {
+
+            startX = GAME_WIDTH - 1;
+            endX = -1;
+            addX = -1;
+        }
+
+        int startY = 0;
+        int endY = GAME_HEIGHT;
+        int addY = 1;
+        if (moveY == 1) {
+
+            startY = GAME_HEIGHT - 1;
+            endY = -1;
+            addY = -1;
+        }
+
+        for (int y = startY; y != endY; y += addY) {
+
+            for (int x = startX; x != endX; x += addX) {
 
                 int tileID = grid[x][y];
                 if (tileID == 0)
@@ -96,8 +127,29 @@ public class TileManager implements GameObject {
 
     private void mergeAll(int moveX, int moveY) {
 
-        for (int y = 0; y < GAME_HEIGHT; y++) {
-            for (int x = 0; x < GAME_WIDTH; x++) {
+        int startX = 0;
+        int endX = GAME_WIDTH;
+        int addX = 1;
+        if (moveX == 1) {
+
+            startX = GAME_WIDTH - 1;
+            endX = -1;
+            addX = -1;
+        }
+
+        int startY = 0;
+        int endY = GAME_HEIGHT;
+        int addY = 1;
+        if (moveY == 1) {
+
+            startY = GAME_HEIGHT - 1;
+            endY = -1;
+            addY = -1;
+        }
+
+        for (int y = startY; y != endY; y += addY) {
+
+            for (int x = startX; x != endX; x += addX) {
 
                 int tileID = grid[x][y];
                 if (tileID == 0)

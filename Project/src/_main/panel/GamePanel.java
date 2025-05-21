@@ -22,7 +22,7 @@ public class GamePanel extends BasePanel {
         super(SETTING_MAX_FPS);
 
         this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
-        this.setBackground(new Color(190, 225, 255));
+        this.setBackground(new Color(40, 50, 60));
 
         this.setDoubleBuffered(true);
         this.setFocusable(true);
