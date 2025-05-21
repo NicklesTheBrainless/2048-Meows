@@ -31,10 +31,10 @@ public class TileManager implements GameObject {
 
         switch (kh.keyJustPressed) {
 
-            case KeyEvent.VK_W -> makeMove(-1,  0);
-            case KeyEvent.VK_A -> makeMove( 0, -1);
-            case KeyEvent.VK_S -> makeMove( 1,  0);
-            case KeyEvent.VK_D -> makeMove( 0,  1);
+            case KeyEvent.VK_W -> makeMove( 0,-1);
+            case KeyEvent.VK_A -> makeMove(-1, 0);
+            case KeyEvent.VK_S -> makeMove( 0, 1);
+            case KeyEvent.VK_D -> makeMove( 1, 0);
         }
     }
 
@@ -96,6 +96,16 @@ public class TileManager implements GameObject {
 
     private void mergeAll(int moveX, int moveY) {
 
+        for (int y = 0; y < GAME_HEIGHT; y++) {
+            for (int x = 0; x < GAME_WIDTH; x++) {
+
+                int tileID = grid[x][y];
+                if (tileID == 0)
+                    continue;
+
+                mergeTile(tileID, x, y, moveX, moveY);
+            }
+        }
     }
 
 
@@ -121,5 +131,22 @@ public class TileManager implements GameObject {
         }
 
         grid[tileX][tileY] = tileID;
+    }
+
+    private void mergeTile(int tileID, int tileX, int tileY, int moveX, int moveY) {
+
+        int checkX = tileX + moveX;
+        int checkY = tileY + moveY;
+
+        if (checkX < 0 || checkX >= GAME_WIDTH || checkY < 0 || checkY >= GAME_HEIGHT)
+            return;
+
+        int checkID = grid[checkX][checkY];
+        if (checkID != tileID)
+            return;
+
+        grid[tileX][tileY] = 0;
+
+        grid[checkX][checkY] = tileID + 1;
     }
 }

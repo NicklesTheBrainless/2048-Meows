@@ -5,7 +5,6 @@ import _main.listeners.MouseHandler;
 import game.TileManager;
 
 import java.awt.*;
-import java.util.Random;
 
 import static _main.setting._Settings.*;
 
