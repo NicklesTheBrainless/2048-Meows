@@ -18,7 +18,7 @@ public class TileManager implements GameObject {
 
     int[][] grid = new int[GAME_WIDTH][GAME_HEIGHT];
 
-    int newTileX, newTileY;
+    int newTileX, newTileY = -1;
 
     public TileManager(GamePanel gp) {
 
@@ -49,7 +49,7 @@ public class TileManager implements GameObject {
                 int tileID = grid[x][y];
                 g2.drawImage(TILE_TEXTURES[tileID], x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE, null);
 
-                g2.setColor(new Color(100, 150, 250, 100));
+                g2.setColor(NEW_TILE_COLOR);
                 if (x == newTileX && y == newTileY)
                     g2.fillOval(x * TILE_SIZE + 16, y * TILE_SIZE + 16, TILE_SIZE - 32, TILE_SIZE - 32);
             }
