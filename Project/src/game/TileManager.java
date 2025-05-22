@@ -84,6 +84,12 @@ public class TileManager implements GameObject {
             }
         }
 
+        if (emptyTiles.isEmpty()) {
+
+            System.out.println("You lost!");
+            System.exit(0);
+        }
+
         int randomIndex = random.nextInt(emptyTiles.size());
         int[] pickedPos = emptyTiles.get(randomIndex);
         int pickedX = pickedPos[0];
@@ -94,6 +100,9 @@ public class TileManager implements GameObject {
             newTileID = 2;
 
         grid[pickedX][pickedY] = newTileID;
+
+        newTileX = pickedX;
+        newTileY = pickedY;
     }
 
     private void compressAll(int moveX, int moveY) {
