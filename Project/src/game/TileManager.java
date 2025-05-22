@@ -6,6 +6,8 @@ import utils.GameObject;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 import static _main.resource._Resources.TILE_TEXTURES;
 import static _main.setting._Settings.*;
@@ -71,23 +73,27 @@ public class TileManager implements GameObject {
 
     private void placeRandomTile() {
 
-        boolean tilePlaced = false;
-        while (!tilePlaced) {
+        List<int[]> emptyTiles = new ArrayList<>();
 
-            int rx = random.nextInt(GAME_WIDTH );
-            int ry = random.nextInt(GAME_HEIGHT);
+        for (int y = 0; y < GAME_HEIGHT; y++) {
+            for (int x = 0; x < GAME_WIDTH; x++) {
 
-            int currentTile = grid[rx][ry];
-            if (currentTile != 0)
-                continue;
-
-            grid[rx][ry] = random.nextInt(1, 3);
-
-            newTileX = rx;
-            newTileY = ry;
-
-            tilePlaced = true;
+                int tileID = grid[x][y];
+                if (tileID == 0)
+                    emptyTiles.add(new int[] {x, y});
+            }
         }
+
+        int randomIndex = random.nextInt(emptyTiles.size());
+        int[] pickedPos = emptyTiles.get(randomIndex);
+        int pickedX = pickedPos[0];
+        int pickedY = pickedPos[1];
+
+        int newTileID = 1;
+        if (random.nextInt(10) == 0)
+            newTileID = 2;
+
+        grid[pickedX][pickedY] = newTileID;
     }
 
     private void compressAll(int moveX, int moveY) {
