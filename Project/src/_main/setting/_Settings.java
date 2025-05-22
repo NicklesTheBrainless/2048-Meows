@@ -14,11 +14,20 @@ public abstract class _Settings {
     public static final int GAME_WIDTH  = 4;
     public static final int GAME_HEIGHT = 4;
 
-    // TILES
+    // TILE TYPES AND TEXTURES
     public static final int TILE_TYPES = 10;
     public static final int TILE_SIZE   = 128;
     public static final int TILE_TEXTURE_SIZE = 16;
-    public static final Color NEW_TILE_COLOR = new Color(100, 150, 250, 80);
+
+    // TILE STATES
+    public static final int DEFAULT = 0;
+    public static final int MERGED  = 1;
+    public static final int SPAWNED = 2;
+
+    // TILES STATE COLORS
+    public static final Color DEFAULT_TILE_COLOR = new Color(0, 0, 0, 0);
+    public static final Color SPAWNED_TILE_COLOR = new Color(100, 150, 250, 60);
+    public static final Color MERGED_TILE_COLOR  = new Color(180, 100, 80, 60);
 
     // SCREEN
     public static final int SCREEN_WIDTH  = GAME_WIDTH  * TILE_SIZE;
