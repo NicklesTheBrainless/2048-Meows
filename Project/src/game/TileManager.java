@@ -7,7 +7,6 @@ import utils.GameObject;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static _main.resource._Resources.TILE_TEXTURES;
@@ -202,6 +201,7 @@ public class TileManager implements GameObject {
 
         tileGrid[tileX][tileY] = 0;
 
-        tileGrid[checkX][checkY] = tileID + 1;
+        tileGrid [checkX][checkY] = tileID + 1;
+        stateGrid[checkX][checkY] = MERGED;
     }
 }

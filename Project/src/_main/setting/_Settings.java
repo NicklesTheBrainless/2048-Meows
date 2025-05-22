@@ -27,7 +27,7 @@ public abstract class _Settings {
     // TILES STATE COLORS
     public static final Color DEFAULT_TILE_COLOR = new Color(0, 0, 0, 0);
     public static final Color SPAWNED_TILE_COLOR = new Color(100, 150, 250, 60);
-    public static final Color MERGED_TILE_COLOR  = new Color(180, 100, 80, 60);
+    public static final Color MERGED_TILE_COLOR  = new Color(190, 80, 60, 60);
 
     // SCREEN
     public static final int SCREEN_WIDTH  = GAME_WIDTH  * TILE_SIZE;
