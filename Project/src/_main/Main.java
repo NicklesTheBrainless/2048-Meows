@@ -4,6 +4,7 @@ import _main.panel.GamePanel;
 
 import javax.swing.*;
 
+import static _main.resource._Resources.ICON;
 import static _main.setting._Settings.TITLE;
 
 public class Main {
@@ -23,10 +24,10 @@ public class Main {
         window.add(gp);
         window.pack();
 
-        //////////////////////////
-        // set window icon here //
-        //////////////////////////
+        // set icon image
+        window.setIconImage(ICON);
 
+        // position the window in the center of the screen and make it visible
         window.setLocationRelativeTo(null);
         window.setVisible(true);
 

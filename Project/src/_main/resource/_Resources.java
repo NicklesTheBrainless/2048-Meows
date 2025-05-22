@@ -10,8 +10,9 @@ import static _main.setting._Settings.TILE_TYPES;
 
 public abstract class _Resources {
 
-    private static final BufferedImage TILE_SET = readImage("/tile_set.png");
+    public static final BufferedImage ICON = readImage("/icon.png");
 
+    private static final BufferedImage TILE_SET = readImage("/tile_set.png");
     public static final BufferedImage[] TILE_TEXTURES = splitTileSet();
 
 

@@ -15,9 +15,9 @@ public abstract class _Settings {
     public static final int GAME_HEIGHT = 4;
 
     // TILE TYPES AND TEXTURES
-    public static final int TILE_TYPES = 10;
-    public static final int TILE_SIZE   = 128;
-    public static final int TILE_TEXTURE_SIZE = 16;
+    public static final int TILE_TYPES = 11;
+    public static final int TILE_SIZE   = 120;
+    public static final int TILE_TEXTURE_SIZE = 20;
 
     // TILE STATES
     public static final int DEFAULT = 0;

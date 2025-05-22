@@ -67,7 +67,7 @@ public class TileManager implements GameObject {
 
     private void makeMove(int moveX, int moveY) {
 
-        updateAllStates();
+        updateTileStates();
 
         compressAll(moveX, moveY);
         mergeAll(moveX, moveY);
@@ -78,7 +78,7 @@ public class TileManager implements GameObject {
 
 
 
-    private void updateAllStates() {
+    private void updateTileStates() {
 
         for (int y = 0; y < GAME_HEIGHT; y++) {
             for (int x = 0; x < GAME_WIDTH; x++) {
@@ -204,6 +204,12 @@ public class TileManager implements GameObject {
             return;
 
         tileGrid[tileX][tileY] = 0;
+
+        if (tileID >= (TILE_TYPES - 1)) {
+
+            System.out.println("You won!");
+            System.exit(0);
+        }
 
         tileGrid [checkX][checkY] = tileID + 1;
         stateGrid[checkX][checkY] = MERGED;
