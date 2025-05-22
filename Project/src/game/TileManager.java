@@ -92,25 +92,13 @@ public class TileManager implements GameObject {
 
     private void compressAll(int moveX, int moveY) {
 
-        int startX = 0;
-        int endX = GAME_WIDTH;
-        int addX = 1;
-        if (moveX == 1) {
+        int startX = (moveX == 1) ? GAME_WIDTH - 1 : 0;
+        int endX = (moveX == 1) ? -1 : GAME_WIDTH;
+        int addX = (moveX == 1) ? -1 : 1;
 
-            startX = GAME_WIDTH - 1;
-            endX = -1;
-            addX = -1;
-        }
-
-        int startY = 0;
-        int endY = GAME_HEIGHT;
-        int addY = 1;
-        if (moveY == 1) {
-
-            startY = GAME_HEIGHT - 1;
-            endY = -1;
-            addY = -1;
-        }
+        int startY = (moveY == 1) ? GAME_HEIGHT - 1 : 0;
+        int endY = (moveY == 1) ? -1 : GAME_HEIGHT;
+        int addY = (moveY == 1) ? -1 : 1;
 
         for (int y = startY; y != endY; y += addY) {
 
@@ -127,25 +115,13 @@ public class TileManager implements GameObject {
 
     private void mergeAll(int moveX, int moveY) {
 
-        int startX = 0;
-        int endX = GAME_WIDTH;
-        int addX = 1;
-        if (moveX == 1) {
+        int startX = (moveX == 1) ? GAME_WIDTH - 1 : 0;
+        int endX = (moveX == 1) ? -1 : GAME_WIDTH;
+        int addX = (moveX == 1) ? -1 : 1;
 
-            startX = GAME_WIDTH - 1;
-            endX = -1;
-            addX = -1;
-        }
-
-        int startY = 0;
-        int endY = GAME_HEIGHT;
-        int addY = 1;
-        if (moveY == 1) {
-
-            startY = GAME_HEIGHT - 1;
-            endY = -1;
-            addY = -1;
-        }
+        int startY = (moveY == 1) ? GAME_HEIGHT - 1 : 0;
+        int endY = (moveY == 1) ? -1 : GAME_HEIGHT;
+        int addY = (moveY == 1) ? -1 : 1;
 
         for (int y = startY; y != endY; y += addY) {
 
