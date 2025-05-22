@@ -67,13 +67,7 @@ public class TileManager implements GameObject {
 
     private void makeMove(int moveX, int moveY) {
 
-        for (int y = 0; y < GAME_HEIGHT; y++) {
-            for (int x = 0; x < GAME_WIDTH; x++) {
-
-                stateGrid[x][y] = 0;
-            }
-        }
-
+        updateAllStates();
 
         compressAll(moveX, moveY);
         mergeAll(moveX, moveY);
@@ -83,6 +77,16 @@ public class TileManager implements GameObject {
     }
 
 
+
+    private void updateAllStates() {
+
+        for (int y = 0; y < GAME_HEIGHT; y++) {
+            for (int x = 0; x < GAME_WIDTH; x++) {
+
+                stateGrid[x][y] = 0;
+            }
+        }
+    }
 
     private void spawnRandomTile() {
 
